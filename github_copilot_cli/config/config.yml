@@ -1,0 +1,9 @@
+sleep_seconds:
+  after_open_vscode: 2
+  after_open_chat: 1
+  before_write_message: 0.5
+  wait_second_enter: 0.1
+  after_copilot_chat_response: 2
+  after_save: 1
+  after_close_vscode: 5
+  wait_close_retry: 5

@@ -1,0 +1,21 @@
+global:
+  chat_message: |
+    Write the README for this repository.
+
+  wait_response_time: 60
+  repository: github-copilot-cli
+  working_directory: .cashe
+
+spec:
+  - action: clone
+    source_branch: main
+
+  - action: checkout
+    source_branch: main
+    new_branch: feature/create-readme
+
+  - action: chat
+    file: ./README.md
+
+  - action: push
+    commit_message: Review changes

@@ -1,0 +1,4 @@
+PyAutoGUI
+PyYAML
+pillow
+pytesseract

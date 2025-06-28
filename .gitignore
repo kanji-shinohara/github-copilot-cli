@@ -1,0 +1,20 @@
+# Python code
+__pycache__
+venv/
+.venv/
+build/
+/dist/
+*.egg-info/
+*/__pycache__/*.pyc
+.idea/
+
+# .env
+ui/.env*
+api/.env*
+.env.local
+
+# MacOs DS_Store
+*.DS_Store
+
+# Cache files
+.cashe

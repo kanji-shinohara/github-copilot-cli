@@ -1,0 +1,27 @@
+[project]
+name = "github-copilot-cli"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "kanji-shinohara",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[project.scripts]
+github-copilot-cli = "github_copilot_automator.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+package-mode = false
+requires-poetry = ">=2.0"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
