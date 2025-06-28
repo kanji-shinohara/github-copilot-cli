@@ -3,7 +3,7 @@ name = "github-copilot-cli"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "kanji-shinohara",email = "you@example.com"}
+    {name = "kanji-shinohara",email = "kanji@cont-aid.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12"
