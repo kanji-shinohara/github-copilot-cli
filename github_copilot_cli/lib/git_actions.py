@@ -15,7 +15,7 @@ def clone_repository(repository: str, source_branch: str, new_branch: str, worki
 
     os.makedirs(working_directory, exist_ok=True)
     repo_name = repository if "/" in repository else f"{repository}"
-    clone_cmd = ["gh", "repo", "clone", repo_name, working_directory, "--", "-b", source_branch]
+    clone_cmd = ["gh", "repo", "clone", repo_name, f"{working_directory}/{repo_name}", "--", "-b", source_branch]
     logger.info(f"Cloning {repo_name} (branch: {source_branch}) into {working_directory} using gh cli")
 
     try:
@@ -28,25 +28,25 @@ def clone_repository(repository: str, source_branch: str, new_branch: str, worki
         raise
 
 
-def checkout_branch(working_directory: str, new_branch: str):
-    if not (working_directory and new_branch):
+def checkout_branch(repository: str, working_directory: str, new_branch: str):
+    if not (repository and working_directory and new_branch):
         logger.warning('Missing required fields for checkout_branch action.')
         return
-    cwd = os.path.abspath(working_directory)
+    cwd = os.path.abspath(f"{working_directory}/{repository}")
     subprocess.run(["git", "checkout", "-b", new_branch], cwd=cwd, check=True)
     logger.info(f"Created and switched to new branch: {new_branch}")
 
 
-def push_changes(working_directory: str, commit_message: str = "Update files via github-copilot-automator"):
-    if not working_directory:
-        logger.warning('No working directory specified for push action.')
+def push_changes(repository: str, working_directory: str, commit_message: str = "Update files via github-copilot-automator"):
+    if not (repository and working_directory):
+        logger.warning('Missing required fields for push_changes action.')
         return
 
     if not os.path.exists(working_directory):
         logger.error(f"Working directory does not exist: {working_directory}")
         return
 
-    cwd = os.path.abspath(working_directory)
+    cwd = os.path.abspath(f"{working_directory}/{repository}")
     subprocess.run(["git", "add", "-A"], cwd=cwd, check=True)
     subprocess.run(["git", "commit", "-m", commit_message], cwd=cwd, check=True)
     subprocess.run(["git", "push", "--set-upstream", "origin", "HEAD"], cwd=cwd, check=True)

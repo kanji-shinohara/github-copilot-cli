@@ -87,14 +87,14 @@ def github_copilot_cli():
             working_directory = global_config.get('working_directory') or action.get('working_directory')
             new_branch = action.get('new_branch')
             logger.info(f"Checking out new branch {new_branch} in {working_directory} ...")
-            checkout_branch(working_directory, new_branch)
+            checkout_branch(repository, working_directory, new_branch)
 
         elif act == 'push':
             working_directory = global_config.get('working_directory') or action.get('working_directory')
             commit_message = action.get('commit_message', 'Update files via github-copilot-automator')
 
             logger.info(f"Pushing changes in {working_directory} ...")
-            push_changes(working_directory, commit_message)
+            push_changes(repository, working_directory, commit_message)
 
         else:
             logger.warning(f"Unknown action: {act}. Skipping this action.")

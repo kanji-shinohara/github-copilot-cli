@@ -173,7 +173,6 @@ def exec_github_copilot_chat(chat_message: str, working_directory: str, file: st
         pyautogui.keyDown("k")
         pyautogui.keyUp("k")
         pyautogui.keyUp("command")
-        pyautogui.keyDown("command")
         pyautogui.keyDown("a")
         pyautogui.keyUp("a")
 

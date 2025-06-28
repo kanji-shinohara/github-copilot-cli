@@ -1,6 +1,6 @@
 global:
   chat_message: |
-    Write the README for this repository.
+    Write the README.md for this repository.
 
   wait_response_time: 60
   repository: github-copilot-cli
@@ -15,7 +15,7 @@ spec:
     new_branch: feature/create-readme
 
   - action: chat
-    file: ./README.md
+    file: github-copilot-cli/README.md
 
   - action: push
     commit_message: Review changes
